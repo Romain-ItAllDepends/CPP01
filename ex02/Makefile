@@ -1,8 +1,6 @@
-NAME=zombie
+NAME=main
 
 MY_SOURCES= main.cpp \
-	Zombie.cpp \
-	zombieHorde.cpp
 		
 red='\033[0;31m'
 green='\033[0;32m'
