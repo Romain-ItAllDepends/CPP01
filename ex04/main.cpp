@@ -6,7 +6,7 @@
 /*   By: rgobet <rgobet@student.42angouleme.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/30 10:52:51 by rgobet            #+#    #+#             */
-/*   Updated: 2024/07/30 13:51:59 by rgobet           ###   ########.fr       */
+/*   Updated: 2024/08/24 07:52:30 by rgobet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,11 @@ void	getFile(char *str, std::string s1, std::string s2) {
 	std::ofstream	ofs;
 	
 	ifs.open (str);
-	ofs.open ("tmp", std::ofstream::app);
+	if (!ifs.is_open())
+		std::cout << "Error opening infile";
+	ofs.open ("tmp.replace", std::ofstream::app);
+	if (!ofs.is_open())
+		std::cout << "Error opening outfile";
 	getline(ifs, line, '\0');
 	i = 0;
 	if (line.empty() == false && s1.empty() == false) {
@@ -32,6 +36,8 @@ void	getFile(char *str, std::string s1, std::string s2) {
 		} 
 	}
 	ofs << line << std::endl;
+	ifs.close();
+	ofs.close();
 }
 
 int	main(int ac, char **av) {

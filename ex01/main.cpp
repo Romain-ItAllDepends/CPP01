@@ -6,7 +6,7 @@
 /*   By: rgobet <rgobet@student.42angouleme.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/30 06:09:44 by rgobet            #+#    #+#             */
-/*   Updated: 2024/07/30 08:29:28 by rgobet           ###   ########.fr       */
+/*   Updated: 2024/08/24 07:32:17 by rgobet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,11 +29,13 @@ int	main(void) {
 
 	while (42) {
 		std::cout << "Choose a name for the zombies of the horde: " << std::endl;
-		while (!(std::cin >> name))
+		while (!(std::getline(std::cin, name)) && !std::cin.eof())
 		{
 			std::cout << "Choose a name for the zombies of the horde: " << std::endl;
 			std::cin.clear();
 		}
+		if (std::cin.eof())
+			return (0);
 		std::cin.clear();
 		std::cout << "Choose the number of zombies for the horde: " << std::endl;
 		while (!(std::cin >> number))
@@ -43,6 +45,8 @@ int	main(void) {
 		}
 		std::cin.clear();
 		zombies = zombieHorde(number, name);
+		if (!zombies)
+			break ;
 		hordeRoar(zombies, number);
 		do
 		{
@@ -56,6 +60,7 @@ int	main(void) {
 			break ;
 		}
 		std::cin.clear();
+		std::cin.ignore();
 	}
 	return (0);
 }

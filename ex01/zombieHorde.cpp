@@ -6,7 +6,7 @@
 /*   By: rgobet <rgobet@student.42angouleme.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/30 07:48:30 by rgobet            #+#    #+#             */
-/*   Updated: 2024/07/30 08:26:34 by rgobet           ###   ########.fr       */
+/*   Updated: 2024/08/24 07:18:19 by rgobet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,12 @@ Zombie* zombieHorde(int N, std::string name) {
 	Zombie	*zombieHorde;
 
 	i = 0;
-	zombieHorde = new Zombie[N];
+	zombieHorde = new(std::nothrow) Zombie[N];
+	if (!zombieHorde)
+	{
+		std::cerr << "Error on allocation!" << std::endl;
+		return (NULL);
+	}
 	while (i < N) {
 		zombieHorde[i].setName(name);
 		i++;

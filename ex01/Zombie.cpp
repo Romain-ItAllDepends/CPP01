@@ -6,7 +6,7 @@
 /*   By: rgobet <rgobet@student.42angouleme.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/30 06:10:17 by rgobet            #+#    #+#             */
-/*   Updated: 2024/07/30 08:26:10 by rgobet           ###   ########.fr       */
+/*   Updated: 2024/08/24 07:23:15 by rgobet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,9 @@ std::string	Zombie::getName(void) {
 	return (this->name);
 }
 
-void	Zombie::setName(std::string _name) {
-	this->name = _name;
+void	Zombie::setName(std::string name) {
+	if (name.empty())
+		this->name = "Random";
+	else
+		this->name = name;
 }

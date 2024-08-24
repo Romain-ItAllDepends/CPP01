@@ -6,7 +6,7 @@
 /*   By: rgobet <rgobet@student.42angouleme.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/30 06:10:17 by rgobet            #+#    #+#             */
-/*   Updated: 2024/07/30 06:55:54 by rgobet           ###   ########.fr       */
+/*   Updated: 2024/08/24 07:08:45 by rgobet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,13 @@
 
 Zombie::Zombie(void)
 {
+}
+
+Zombie::Zombie(std::string name) {
+	if (name.empty())
+		this->name = "Anonymous";
+	else
+		this->name = name;
 }
 
 Zombie::~Zombie(void)
@@ -29,6 +36,6 @@ std::string	Zombie::getName(void) {
 	return (this->name);
 }
 
-void	Zombie::setName(std::string _name) {
-	this->name = _name;
+void	Zombie::setName(std::string name) {
+	this->name = name;
 }
